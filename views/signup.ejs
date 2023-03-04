@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="/css/form.css" />
+
+<div class="form-container text-center">
+  <h1 class="text-white"><%= title %></h1>
+  <!-- Here we must provide an id to enable Google reCAPTCHA -->
+  <form action="/register" method="post" id="contact-form">
+    <div class="form-floating mb-1">
+      <input
+        type="text"
+        name="fname"
+        class="form-control"
+        id="floatingInput"
+        required
+      />
+      <label for="floatingInput">First Name</label>
+    </div>
+    <div class="form-floating mb-1">
+      <input
+        type="text"
+        name="lname"
+        class="form-control"
+        id="floatingLname"
+        required
+      />
+      <label for="floatingLname">Last Name</label>
+    </div>
+    <div class="form-floating mb-1">
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        id="floatingEmail"
+        required
+      />
+      <label for="floatingEmail">Email</label>
+    </div>
+    <div class="form-floating">
+      <input
+        type="password"
+        name="password"
+        class="form-control"
+        id="floatingPassword"
+        placeholder="Password"
+        required
+      />
+      <label for="floatingPassword">Password</label>
+    </div>
+    <!-- This button tag is provided by Google reCAPTCHA with class and data attribute -->
+    <button
+      class="btn btn-success mt-3 px-4 g-recaptcha"
+      data-sitekey="6LclH84kAAAAAIh5R65TIPMYnAl_PSFkXiQX-PRj"
+      data-callback="onSubmit"
+    >
+      Sign Me Up
+    </button>
+  </form>
+
+  <div class="social-auth-container">
+    <a href="/auth/google">
+      <div
+        class="google-container d-flex justify-content-evenly align-items-center"
+      >
+        <img
+          width="40"
+          src="https://cdn-icons-png.flaticon.com/512/281/281764.png"
+          alt=""
+        />
+        <p class="mt-3">Sign up with Google</p>
+      </div>
+    </a>
+  </div>
+  <div>
+    <a class="text-white" href="/page/login">already have account?</a>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <% if (typeof messages !== 'undefined') { %> <%
+  messages.forEach(function(message) { %>
+  <div
+    class="alert alert-<%= message.type %> alert-dismissible fade show"
+    role="alert"
+  >
+    <%= message.message %>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  <% }); %> <% } %>
+</div>

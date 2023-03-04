@@ -1,0 +1,62 @@
+<% if (locals.successMessage) { %>
+<div class="alert alert-success"><%= locals.successMessage %></div>
+<% } %> <% if (locals.errorMessage) { %>
+<div class="alert alert-danger"><%= locals.errorMessage %></div>
+<% } %>
+
+<link rel="stylesheet" href="/css/form.css" />
+
+<div class="form-container text-center">
+  <h1 class="text-white"><%= title %></h1>
+  <!-- Here we must provide an id to enable Google reCAPTCHA -->
+  <form action="/login" method="post" id="contact-form">
+    <div class="form-floating mb-1">
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        id="floatingEmail"
+        required
+      />
+      <label for="floatingEmail">Email</label>
+    </div>
+    <div class="form-floating">
+      <input
+        type="password"
+        name="password"
+        class="form-control"
+        id="floatingPassword"
+        required
+      />
+      <label for="floatingPassword">Password</label>
+    </div>
+    <!-- This button tag is provided by Google reCAPTCHA with class and data attribute -->
+    <button
+      class="btn btn-success mt-3 px-4 g-recaptcha"
+      data-sitekey="6LclH84kAAAAAIh5R65TIPMYnAl_PSFkXiQX-PRj"
+      data-callback="onSubmit"
+    >
+      Login
+    </button>
+  </form>
+  <div>
+    <a href="/page/forgot_password" class="text-white">forgotten password?</a>
+  </div>
+  <div class="social-auth-container">
+    <a href="/auth/google">
+      <div
+        class="google-container d-flex justify-content-evenly align-items-center"
+      >
+        <img
+          width="40"
+          src="https://cdn-icons-png.flaticon.com/512/281/281764.png"
+          alt=""
+        />
+        <p class="mt-3">Sign in with Google</p>
+      </div>
+    </a>
+  </div>
+  <div>
+    <a class="text-white" href="/page/signup">don't have an account?</a>
+  </div>
+</div>
